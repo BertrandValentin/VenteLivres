@@ -1,3 +1,3 @@
 <?php      
-  header('Location: ./control/home.php');
+  header('Location: ./control/login.php');
 ?>

@@ -11,4 +11,7 @@
 		<h1>
 			Vente de livres
 		</h1>
+		<?php
+			require_once('../VIEW/menu.php');
+		?>
 	</header>

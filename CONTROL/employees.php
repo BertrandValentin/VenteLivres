@@ -5,7 +5,7 @@
 ?>
 
 <?php
-	require_once('../VIEW/home.php');
+	require_once('../VIEW/employees.php');
 	require_once('../VIEW/right.php');
 ?>
 

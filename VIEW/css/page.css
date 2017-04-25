@@ -13,13 +13,42 @@ header{
   border-radius: 4px;
   text-align: center;
 }
+
+/************/
+/* top menu */
+/************/
+
+header li {
+ list-style-type: none;
+ display: inline-block;
+}
+
+header li:not(:last-child){
+  border-right: 1px solid white;
+}
+
+header ul {
+ text-align: center;
+ border-color: rgb(223,102,47);
+ margin-bottom: 0px;
+}
+
+header ul:not(:first-child){
+  padding-left: 4px;
+}
+
+header a:link, header a:visited, header a:hover, header a:active {
+    color: #030303;
+    text-decoration: none;
+}
+
 /**********/
 /* asides */
 /**********/
 
 aside{
   background-color: #040404;
-  top: 100px;
+  top: 121px;
 }
 
 .right{
