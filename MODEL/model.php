@@ -34,7 +34,7 @@ class Model{
 	}
 
 	static function load($name){
-		require_once ('../model/'.$name.'.php');
+		require_once ('../MODEL/'.$name.'.php');
 		return new $name($name);
 	}
 	
@@ -74,7 +74,7 @@ class Model{
 		}
 
 		try{
-			// On envois la requète
+			// On envoit la requète
 			$select = $this->connection->query($sql);
 			if($select==false){
 				echo 'Erreur lors de l\' exécution de la requète : '.$sql;
@@ -85,7 +85,7 @@ class Model{
 				$this->data = $select->fetchAll();
 			}
 		}catch(PDOException $e ) {
-			echo 'Erreur lors de l\' exécution de la requète : '.$sql.'==========='.$e->getMessage(); ;
+			echo 'Erreur lors de l\' ex&eacute;cution de la requ&eagrave;te : '.$sql.'==========='.$e->getMessage(); ;
 		}
 
 	}

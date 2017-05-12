@@ -9,7 +9,9 @@
 	require_once('../CONTROL/control.php');
 
 	/*Vérifie si l'utilisateur est bien connecté ==> redirection vers le Login*/
+	/*
 	if (strpos($_SERVER['REQUEST_URI'], '/CONTROL/login')==false && Control::user_connected()==false ){
 	    header("Location: login.php");
 	}
+	*/
 ?>

@@ -2,7 +2,7 @@
 <section>
 	<article>
 		<?php
-			echo Vue::rtv_table($employees,"ZONE_RECH_EMPLOYEES");
+			echo View::rtv_table($employees,"ZONE_RECH_EMPLOYEES");
 		?>
 	</article>
 	<article>
