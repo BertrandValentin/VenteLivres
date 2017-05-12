@@ -128,3 +128,27 @@ article{
 section article:not(:last-child){
   border-bottom: 2px dotted darkgray;
 }
+
+/*********/
+/* table */
+/*********/
+
+section > article > table {
+  border: none;
+}
+
+article > table {
+  border: none;
+}
+
+table{
+  border: solid 1px grey;
+}
+
+th{
+  border: solid 2px white;
+}
+
+td{
+  border: dotted 1px white;
+}
