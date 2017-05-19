@@ -86,7 +86,6 @@ footer{
   padding: 10px;
   margin-top: 10px;
   border-radius: 4px;
-  bottom: 8px;
 }
 
 footer a:link, footer a:visited, footer a:hover, footer a:active {
@@ -127,4 +126,29 @@ article{
 
 section article:not(:last-child){
   border-bottom: 2px dotted darkgray;
+}
+
+/*********/
+/* table */
+/*********/
+
+#RESULT_ZONE_RECH_EMPLOYEES{
+  border: none;
+  margin: 0px  0px 0px 0px;
+}
+
+#RESULT_ZONE_RECH_EMPLOYEES > article{
+  border: none;
+}
+
+table{
+  border: none;
+}
+
+th{
+  border: solid 2px white;
+}
+
+td{
+  border: dotted 1px white;
 }
