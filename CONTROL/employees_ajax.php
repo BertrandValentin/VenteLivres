@@ -10,9 +10,9 @@
 		$rech = $_POST['RECH_AJAX'];
 	}
 
-	$employees=Model::load("employees");
+	$employees=Model::load("utilisateurs");
 
-	$employees->read('employeeID "#", Title "Titre ", LastName "Nom" , FirstName "Prénom"', $rech );
+	$employees->read('utilisateur "#", nom "Nom", prenom "Prenom" , admin "admin", actif "actif" ',$rech );
 
 	require_once('../VIEW/employees.php');
 ?>
