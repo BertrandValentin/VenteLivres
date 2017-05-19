@@ -5,7 +5,7 @@
 
 	$employees=Model::load("utilisateurs");
 	$employees->id[0]=$_POST['RECH_FIC'];
-	$employees->read('utilisateur "User", code "Code ", nom "Name", prenom "FirstName", admin "Admin", actif "Active" ');
+	$employees->read('utilisateur "User", code "Code ", nom "Name", prenom "FirstName", admin "Admin", actif "Active"');
 	echo $employees->rtv_fiche($employees);
 
 	require_once('../VIEW/right.php');

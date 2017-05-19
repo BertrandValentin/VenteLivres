@@ -86,7 +86,6 @@ footer{
   padding: 10px;
   margin-top: 10px;
   border-radius: 4px;
-  bottom: 8px;
 }
 
 footer a:link, footer a:visited, footer a:hover, footer a:active {
@@ -133,16 +132,17 @@ section article:not(:last-child){
 /* table */
 /*********/
 
-section > article > table {
+#RESULT_ZONE_RECH_EMPLOYEES{
   border: none;
+  margin: 0px  0px 0px 0px;
 }
 
-article > table {
+#RESULT_ZONE_RECH_EMPLOYEES > article{
   border: none;
 }
 
 table{
-  border: solid 1px grey;
+  border: none;
 }
 
 th{
