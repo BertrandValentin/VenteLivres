@@ -12,12 +12,11 @@
 
 	$employees=Model::load("utilisateurs");
 
-<<<<<<< HEAD
 	$employees->read('utilisateur "#", nom "Nom", prenom "Prenom" , admin "admin", actif "actif" ',$rech );
-=======
+	/*
 	$employees->read('utilisateur "User", code "Code ", nom "Name", prenom "FirstName", admin "Admin", actif "Active" ', $rech );
 	//`utilisateur`, `code`, `nom`, `prenom`, `admin`, `actif`
->>>>>>> origin/master
+	*/
 
 	require_once('../VIEW/employees.php');
 ?>
