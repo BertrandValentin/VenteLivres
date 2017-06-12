@@ -39,7 +39,6 @@ class Model{
 	}
 	
 	public function read($fields=null,$pRech=null){
-
 		if($fields==null){
 			$fields = '*';
 		}
@@ -70,7 +69,6 @@ class Model{
 			}else{
 				$sql= 'SELECT '.$fields.' from '.$this->table ;
 			}
-
 		}
 
 		try{

@@ -12,7 +12,7 @@
 
 	$books=Model::load("livres");
 
-	$books->read('LivreID "#", titre "Titre ", auteur "Auteur" , prix_unitaire "Prix", actif "actif" ',$rech );
+	$books->read('LivreID "#", titre "Titre", auteur "Auteur" , prix_unitaire "Prix" , actif "Actif"',$rech );
 
 	require_once('../VIEW/books.php');
 ?>

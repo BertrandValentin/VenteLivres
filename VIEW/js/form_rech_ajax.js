@@ -28,14 +28,10 @@ var createAllErrors = function()
 		if ( this.checkValidity && !this.checkValidity() ) {
 			$( this ).find( ":invalid" ).first().focus();
 		}else{
-			$.post( form.attr("action"), form.serialize())
-  			.done(function( data ) {
-    				$('#popup1').remove();
-    				$( '.RECH' ).keyup();
-
-  					}
-  				)
-  		;
+			$.post( form.attr("action"), form.serialize()).done(function( data ) {
+    			$('#popup1').remove();
+    			$( '.RECH' ).keyup();
+  			});
 		}
 		event.preventDefault();
 	});

@@ -70,7 +70,7 @@ class View{
 	}
 
 
-	public static  function Rtv_Zone_rech($pAction,$pNom,$pRechVal,$pPlaceHolder){
+	public static function Rtv_Zone_rech($pAction, $pNom, $pRechVal, $pPlaceHolder){
 		$ValRetour = '<section>';
 		$ValRetour .= '<article>';
 		$ValRetour .= '<form action="'.$pAction.'" method="post" accept-charset="utf-8">';
@@ -81,6 +81,19 @@ class View{
 		$ValRetour .= '</section>';
 		
 		return $ValRetour;
+	}
+
+	public static function rtv_zone_radio_buttons($buttons){
+		$out = '<section>
+					<article>
+						<label for="all">tout<input type="radio" name="display" id="all"></label>';
+		foreach ($buttons as $key => $value) {
+			$out .= '<label for="'.$key.'">'.$value.'<input type="radio" name="display" id="'.$key.'"></label>';
+		}
+		$out .= 	'</article>
+				</section>';
+
+		return $out;
 	}
 }
 ?>

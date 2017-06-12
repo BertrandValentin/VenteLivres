@@ -15,7 +15,8 @@ class Utilisateurs extends Model{
 		$sql.=", prenom 	=".$this->connection->quote($pTB["Prenom"]);
 		$sql.=", admin 		=".$this->connection->quote($pTB["Admin"]);
 		$sql.=", actif 		=".$this->connection->quote($pTB["Actif"]);
-		$sql.=" where ".$this->PK[0]." =  ".$this->connection->quote($pTB["#"]); 
+		$sql.=" where ".$this->PK[0]." =  ".$this->connection->quote($pTB["#"]);
+		
 		return $this->connection->query($sql);
 	}
 }
