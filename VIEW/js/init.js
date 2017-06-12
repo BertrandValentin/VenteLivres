@@ -1,10 +1,6 @@
 <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-
 <script>
-
 var maFonction = function(event){
 	var elem=$( this );
 	elem.wrap('<i></i>');
@@ -37,24 +33,13 @@ var maFonctionImage = function(event){
 
 $(function(){
 	$('H2').on('click', maFonctionH2);
-	$('img').wrap("<div class=\"box\"><a class=\"button\" href=\"#popup1\"></a></div>");
-	$('img').on('click', maFonctionImage);
-	<?php require_once('../vue/js/rech.js')?>
+	/* appel sur une balise dont l'id de la class est cover */
+	$('.cover').wrap("<div class=\"box\"><a class=\"button\" href=\"#popup1\"></a></div>");
+	$('.cover').on('click', maFonctionImage);
+	$('.cover').on('click', maFonctionImage);
+
+	$('input[name="FormModeAjax"]').attr("value" ,"1");
+	<?php require_once('../VIEW/js/search.js')?>
+	<?php require_once('../VIEW/js/form_rech_ajax.js')?>
 });
-
 </script>
-
-
-<?php
-
-/*require( '../vue/js/popup.js');*/
-if (isset($GLOBALS['tb_require'])){
-	foreach($GLOBALS['tb_require'] as $key => $element){
-		require $element;
-	};
-};
-?>
-
-
-
-

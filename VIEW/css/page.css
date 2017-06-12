@@ -49,24 +49,19 @@ header a:link, header a:visited, header a:hover, header a:active {
 aside{
   background-color: #040404;
   top: 121px;
+  bottom: 8px;
+  width: 300px;
+  position: fixed;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
 }
 
 .right{
   right: 8px;
-  width: 300px;
-  bottom: 56px;
-  position: fixed;
-  border: 1px solid #d4d4d4;
-  border-radius: 4px;
 }
 
 .left{
   left: 8px;
-  width: 300px;
-  bottom: 56px;
-  position: fixed;
-  border: 1px solid #d4d4d4;
-  border-radius: 4px;
 }
 
 /**********/
@@ -80,6 +75,8 @@ footer{
   line-height: 12px;
   border: 1px solid #d4d4d4;
   /* positionnement */
+  margin-right: 310px;
+  margin-left: 310px;
   left: 8px;
   right: 8px;
   height: 16px;
@@ -132,15 +129,6 @@ section article:not(:last-child){
 /* table */
 /*********/
 
-#RESULT_ZONE_RECH_EMPLOYEES{
-  border: none;
-  margin: 0px  0px 0px 0px;
-}
-
-#RESULT_ZONE_RECH_EMPLOYEES > article{
-  border: none;
-}
-
 table{
   border: none;
 }
@@ -151,4 +139,9 @@ th{
 
 td{
   border: dotted 1px white;
+}
+
+/*#array table td[rowspan]*/
+label[name="display"]{
+  color: red;
 }
