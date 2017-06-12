@@ -145,3 +145,16 @@ td{
 label[name="display"]{
   color: red;
 }
+
+/*********/
+/* popup */
+/*********/
+#popup1{
+  left: 512px;
+  right: 512px;
+  top: 128px;
+  position:absolute;
+  z-index: 8;
+  background-color: lightgrey;
+  color: black;
+}

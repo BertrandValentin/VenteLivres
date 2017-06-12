@@ -1,5 +1,5 @@
 <?php
-class livres extends Model{
+class Livres extends Model{
 	var $table = "livres";	
 	var $id ;
 	var $PK=array("LivreID");

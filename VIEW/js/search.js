@@ -5,11 +5,10 @@ var AjaxRech = function()
 	$formAction = $form.attr("action");
 	$formValeur = $input.val();
 	$zoneResult = '#RESULT_'+$input.attr("name");
-	$formAction = $formAction.replace('.php', '_ajax.php');
+	$formAction = $formAction.replace(".php", "_ajax.php");
 
 	$.post( $formAction, { RECH_AJAX : $formValeur })
   		.done(function( data ) {$($zoneResult).replaceWith(data);});
 };
-
 
 $("body").delegate( ".RECH", "keyup", AjaxRech);
