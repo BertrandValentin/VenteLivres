@@ -39,9 +39,15 @@ class View{
 
 		foreach($pParam->data as $key => $element){
 			foreach($element as $subkey => $subelement){
+				if($subkey == "#") {
+					$id = 'identifiant';
+				}
+				else {
+					$id = strtolower($subkey);
+				}
 				$out .= "<tr>";
 				$out .= '<th>'.$subkey.'</th>' ;
-				$out .= '<td>'.$subelement.'</td>' ;
+				$out .= '<td id="'.$id.'">'.$subelement.'</td>' ;
 				$out .= "</tr>";
 			}
 		}
@@ -50,18 +56,21 @@ class View{
 	}
 
 
-	public static function rtv_Fiche_Admin($pParam,$pAction="",$pPK=""){
+	public static function rtv_Fiche_Admin($pParam, $pAction="", $pPK=""){
 		$out = '<form method="post" action="'.$pAction.'">';
 		$out .= '<input type="hidden" name="FormFiche" value="1">';
 		$out .= '<input type="hidden" name="FormModeAjax" value="0">';
 
 		foreach($pParam->data as $key => $element){
 			foreach($element as $subkey => $subelement){
+				/*
 				$varReadOnly="";
 				if($subkey==$pPK){
 					$varReadOnly="readonly";
 				}
-				$out .= '<p><label for="'.$subkey.'" class="FormFiche">'.$subkey.'</label> : <input type="text" name="'.$subkey.'"  value="'.$subelement.'" '.$varReadOnly.' /></p>';
+				*/
+				$out .= '<p><label for="'.$subkey.'" class="FormFiche">'.$subkey.'</label> : <input type="text" name="'.
+						$subkey.'" value="'.$subelement.'" './*$varReadOnly.*/' /></p>';
 			}
 		}
 		$out .= '<input type="submit" name="" value="Valider">';
@@ -83,14 +92,21 @@ class View{
 		return $ValRetour;
 	}
 
-	public static function rtv_zone_radio_buttons($buttons){
+	/**
+	 * $pAction : page sur laquelle envoyer les donnees
+	 * $inputName : nom donne au groupe de boutons radios
+	 * $buttons : tableau de boutons a ajouter
+	 */
+	public static function rtv_zone_radio_buttons($pAction, $inputName, $buttons){
 		$out = '<section>
 					<article>
-						<label for="all">tout<input type="radio" name="display" id="all"></label>';
+						<form action="'.$pAction.'" method="post" accept-charset="utf-8">
+							<label for="all">tout<input type="radio" name="'.$inputName.'" id="all" value="all" checked></label>';
 		foreach ($buttons as $key => $value) {
-			$out .= '<label for="'.$key.'">'.$value.'<input type="radio" name="display" id="'.$key.'"></label>';
+			$out .= '<label for="'.$key.'">'.$value.'<input type="radio" name="'.$inputName.'" id="'.$key.'" value="'.$key.'"></label>';
 		}
-		$out .= 	'</article>
+		$out .= 		'</form>
+					</article>
 				</section>';
 
 		return $out;

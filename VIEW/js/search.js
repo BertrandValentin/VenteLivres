@@ -1,3 +1,4 @@
+/*todo: ecrire une seule fct qui recupere le input sans faire reference $(this)*/
 var AjaxRech = function() 
 {
 	$input=$(this);
@@ -7,8 +8,27 @@ var AjaxRech = function()
 	$zoneResult = '#RESULT_'+$input.attr("name");
 	$formAction = $formAction.replace(".php", "_ajax.php");
 
-	$.post( $formAction, { RECH_AJAX : $formValeur })
+	var value = $("input:checked").val();
+
+	$.post( $formAction, { RECH_AJAX : $formValeur, 'RADIO': value })
   		.done(function( data ) {$($zoneResult).replaceWith(data);});
 };
 
 $("body").delegate( ".RECH", "keyup", AjaxRech);
+
+var AjaxRadio = function() {
+	$input=$(this);
+	$form=$input.parents("form");
+	$formAction = $form.attr("action");
+	$formValeur = $input.val();
+	$zoneResult = '#RESULT_'+$input.attr("name").replace("RADIO", "RECH");
+	$formAction = $formAction.replace(".php", "_ajax.php");
+
+	var value = $("input:text").val();
+	console.log(value);
+
+	$.post( $formAction, { RECH_AJAX : value, 'RADIO': $formValeur })
+  		.done(function( data ) {$($zoneResult).replaceWith(data);});
+}
+
+$('input:radio').each(function() { $(this).click(AjaxRadio); });

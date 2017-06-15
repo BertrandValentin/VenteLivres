@@ -19,5 +19,10 @@ class Utilisateurs extends Model{
 		
 		return $this->connection->query($sql);
 	}
+
+	public function setActif($id, $value) {
+		$sql = "update ".$this->table." set actif = '".$value."' where ".$this->PK[0]." = '".$id."'";
+		return $this->connection->query($sql);
+	}
 }
 ?>

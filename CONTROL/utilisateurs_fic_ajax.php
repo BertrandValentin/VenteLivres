@@ -4,11 +4,12 @@
 	
 	/* admin */
 	if ( isset($_SESSION['USEROBJECT']) && isset($_SESSION['USEROBJECT']->admin) && $_SESSION['USEROBJECT']->admin == '2') {
+		$utilisateurs=Model::load("utilisateurs");
 		if(isset($_POST['FormFiche'])){
 			if($utilisateurs->update($_POST)){
 				echo "Modification effectu&eacute;e";
 			}
-			$_POST['RECH_FIC']=$_POST['#'];
+			$_POST['RECH_FIC']=$_POST['UtilisateurId'];
 		}
 		$utilisateurs->id[0]=$_POST['RECH_FIC'];
 		$utilisateurs->read('utilisateur "#", code "Code", nom "Nom" , prenom "Prenom" , admin "Admin" , actif "Actif"');

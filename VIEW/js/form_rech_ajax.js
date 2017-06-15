@@ -49,6 +49,8 @@ var createAllErrors = function()
 
 var visuPopup = function(event){
 	var elem=$( this );
+	var toggleActiveDisplay="actif-inactif";
+	var toggleActive="toggleActive";
 
 	$formValeur = $("input[name='RECH_FIC']",elem).attr("value");
 	$formAction = $("form",elem).attr("action");
@@ -59,8 +61,9 @@ var visuPopup = function(event){
 			var monHTML="\
 						<div id=\"popup1\" class=\"overlay\"> \
 							<div class=\"popup\"> \
-								<h2>Description</h2> \
 								<a class=\"close\" href=\"#\">&times;</a> \
+								<h2>Description</h2> \
+								<input type=\"submit\" id=\""+toggleActive+"\" value=\""+toggleActiveDisplay+"\"> \
 								<div class=\"content\"> \
 									"+data+" \
 								</div> \
@@ -73,11 +76,31 @@ var visuPopup = function(event){
 
 			$('#popup1 form').each(createAllErrors);
 
-			$('.close'	).on('click',function(event) {
-				$('#popup1').remove();
+			/*waits for the dom to be fully loaded.
+			  waits for a click on a html tag with the id contained in the var toggleActive.
+			  toggle active is supposed to change the value of the Actif value of a user or a book*/
+			$(document).ready(function() {
+				$("#"+toggleActive).click(function(){
+					alert(toggleActive+" & "+toggleActiveDisplay);
+				});
 			});
 
+			$('.close').on('click',function(event) {
+				$('#popup1').remove();
+			});
   		});
 };
 
 $( 'body' ).delegate('.RECH_FORM',"click", visuPopup);
+
+var alertMe = function(output){
+	alert(output);
+};
+
+var readActiveValue = function(){
+	return 'e';
+};
+
+var toggleActiveValue = function(){
+	return 'toggle value';
+};

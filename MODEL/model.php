@@ -1,14 +1,14 @@
 <?php
 class Model{
-	protected  	$connection;
-	protected  	$dbMapArray;
-	protected 	$schema ;
-	protected  	$table ;	
-	protected  	$id= array() ; 
-	protected  	$PK= array(); 
-	protected  	$Rech= array(); 
+	protected $connection;
+	protected $dbMapArray;
+	protected $schema ;
+	protected $table ;	
+	protected $id= array() ; 
+	protected $PK= array(); 
+	protected $Rech= array(); 
 	
-	public    	$data ;
+	public $data ;
 	
 	function __construct() {
 		
@@ -54,7 +54,8 @@ class Model{
 		}else{
 			$where="";
 			$i=0;
-			while($i<count($this->Rech)){
+			$count = count($this->Rech);
+			while($i< $count){
 				if ($i==0){
 					$where="upper(concat(";
 				}else{
@@ -72,12 +73,12 @@ class Model{
 		}
 
 		try{
-			// On envoit la requète
+			// envoit de la requete
 			$select = $this->connection->query($sql);
 			if($select==false){
 				echo 'Erreur lors de l\' exécution de la requète : '.$sql;
 			}else{
-				// On indique que nous utiliserons les résultats en tant qu'objet
+				// on indique que nous utiliserons les resultats en tant qu'objet
 				$select->setFetchMode(PDO::FETCH_OBJ);
 				$this->data = new stdClass();
 				$this->data = $select->fetchAll();
@@ -85,7 +86,6 @@ class Model{
 		}catch(PDOException $e ) {
 			echo 'Erreur lors de l\' ex&eacute;cution de la requ&eagrave;te : '.$sql.'==========='.$e->getMessage(); ;
 		}
-
 	}
 }
 ?>
