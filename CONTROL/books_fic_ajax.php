@@ -2,6 +2,21 @@
 	require_once('../CONTROL/core.php');
 	$livres=Model::load("livres");
 
+	/* je recupere le livre avec la propriete Actif, je teste et si c'est bon, je la unset et la place dans le panier */
+	if(isset($_POST['BASKET_ADD'])) {
+		if(!isset($_SESSION['basket']))
+			$_SESSION['basket'] = array();
+		$livres->id[0]=$_POST['BASKET_ADD'];
+		$livres->read('LivreID "#", titre "Titre", auteur "Auteur" , prix_unitaire "Prix" , actif "Actif"');
+		if(isset($livres->data[0], $livres->data[0]->Actif)) {
+			if($livres->data[0]->Actif == '2') {
+				unset($livres->data[0]->Actif);
+				array_push($_SESSION['basket'], $livres->data[0]);
+			}
+		}
+		require_once("../VIEW/right.php");
+	}
+	
 	/* admin */
 	if(Control::is_admin()) {
 		if(isset($_POST['FormFiche'])&&isset($_POST['MODE'])){

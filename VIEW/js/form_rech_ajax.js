@@ -31,6 +31,7 @@ var createAllErrors = function()
 			$.post( form.attr("action"), form.serialize()).done(function( data ) {
     			$('#popup1').remove();
     			$( '.RECH' ).keyup();
+    			console.log(data)
   			});
 		}
 		event.preventDefault();
@@ -58,12 +59,19 @@ var visuPopup = function(event){
 
 	$.post( $formAction, { RECH_FIC : $formValeur })
   		.done(function( data ) {
+  			if ($formAction.indexOf('books') !== -1) {
+  				var basket_button = '<input type="submit" id="basket_button" value="Ajouter au Panier">';
+			}
+			else {
+				var basket_button = '';
+			}
 			var monHTML="\
 						<div id=\"popup1\" class=\"overlay\"> \
 							<div class=\"popup\"> \
 								<a class=\"close\" href=\"#\">&times;</a> \
 								<h2>Description</h2> \
 								<input type=\"submit\" id=\""+toggleActive+"\" value=\""+toggleActiveDisplay+"\"> \
+								"+basket_button+"\
 								<div class=\"content\"> \
 									"+data+" \
 								</div> \
@@ -83,6 +91,7 @@ var visuPopup = function(event){
 				$("#"+toggleActive).click(function(){
 					alert(toggleActive+" & "+toggleActiveDisplay);
 				});
+				$("#basket_button").click(addToBasket);
 			});
 
 			$('.close').on('click',function(event) {
@@ -92,3 +101,13 @@ var visuPopup = function(event){
 };
 
 $( 'body' ).delegate('.RECH_FORM',"click", visuPopup);
+
+var addToBasket = function(event) {
+	$.post($formAction, { BASKET_ADD : $formValeur })
+  		.done(function( data ) {
+  			// refresh de right.php?
+  			$('aside.right').replaceWith(data);
+  		});
+};
+
+$("#basket_button").click(addToBasket);

@@ -34,5 +34,20 @@ class Control{
 	public static function is_admin() {
 		return isset($_SESSION['USEROBJECT']) && isset($_SESSION['USEROBJECT']->admin) && $_SESSION['USEROBJECT']->admin == '2';
 	}
+
+	public static function get_basket_stats() {
+		$ret = new stdClass;
+		$total = 0;
+		$count = 0;
+		if(isset($_SESSION['basket'])) {
+			$count = count($_SESSION['basket']);
+			foreach ($_SESSION['basket'] as $livre) {
+				$total += $livre->Prix;
+			}
+		}
+		$ret->count = $count;
+		$ret->total = $total;
+		return $ret;
+	}
 }
 ?>

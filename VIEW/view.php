@@ -123,5 +123,29 @@ class View{
 		$formNouveau .= '</form>';
 		return $formNouveau;
 	}
+
+	public static function rtv_simple_table($array) {
+		$out = "";
+		$headers = "";
+
+		foreach ($array as $key => $livre) {
+			$out .= '<tr>';
+			foreach ($livre as $header => $value) {
+				if($header != '#') {
+					if($key == 0) {
+						$headers .= '<th>'.$header.'</th>';
+					}
+					$out .= '<td>'.$value.'</td>';
+				}
+			}
+			$out .= '</tr>';
+		}
+		if(count($array > 0));
+			$out = '<table><tr>'.$headers.'</tr>'.$out.'</table>';
+
+		//$out = '<section><article>' . $out. '</article></section>';
+
+		return $out;
+	}
 }
 ?>
