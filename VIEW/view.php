@@ -63,14 +63,12 @@ class View{
 
 		foreach($pParam->data as $key => $element){
 			foreach($element as $subkey => $subelement){
-				/*
 				$varReadOnly="";
 				if($subkey==$pPK){
-					$varReadOnly="readonly";
+					$varReadOnly="readonly disabled";
 				}
-				*/
 				$out .= '<p><label for="'.$subkey.'" class="FormFiche">'.$subkey.'</label> : <input type="text" name="'.
-						$subkey.'" value="'.$subelement.'" './*$varReadOnly.*/' /></p>';
+						$subkey.'" value="'.$subelement.'" '.$varReadOnly.' /></p>';
 			}
 		}
 		$out .= '<input type="submit" name="" value="Valider">';

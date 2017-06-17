@@ -92,15 +92,3 @@ var visuPopup = function(event){
 };
 
 $( 'body' ).delegate('.RECH_FORM',"click", visuPopup);
-
-var alertMe = function(output){
-	alert(output);
-};
-
-var readActiveValue = function(){
-	return 'e';
-};
-
-var toggleActiveValue = function(){
-	return 'toggle value';
-};

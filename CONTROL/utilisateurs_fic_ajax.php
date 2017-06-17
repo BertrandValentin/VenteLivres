@@ -4,7 +4,6 @@
 	
 	/* admin */
 	if ( isset($_SESSION['USEROBJECT']) && isset($_SESSION['USEROBJECT']->admin) && $_SESSION['USEROBJECT']->admin == '2') {
-		$utilisateurs=Model::load("utilisateurs");
 		if(isset($_POST['FormFiche'])){
 			if($utilisateurs->update($_POST)){
 				echo "Modification effectu&eacute;e";
@@ -17,7 +16,7 @@
 	}
 	else {
 		$utilisateurs->id[0]=$_POST['RECH_FIC'];
-		$utilisateurs->read('utilisateur "#", nom "nom", prenom "prenom" , admin "admin" , actif "actif" ');
+		$utilisateurs->read('nom "nom", prenom "prenom" , admin "admin" , actif "actif" ');
 		echo VIEW::rtv_fiche($utilisateurs);
 	}
 ?>
