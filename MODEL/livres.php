@@ -10,14 +10,34 @@ class Livres extends Model{
 	public function update($pTB){
 		$sql= " update ".$this->table;
 		$sql.=" set ";
-		$sql.=" LivreID			=".$this->connection->quote($pTB["LivreID"]);
-		$sql.=", titre 			=".$this->connection->quote($pTB["titre"]);
-		$sql.=", auteur  		=".$this->connection->quote($pTB["auteur"]);
-		$sql.=", prix_unitaire	=".$this->connection->quote($pTB["prix_unitaire"]);
-		$sql.=", actif 			=".$this->connection->quote($pTB["actif"]);
-		$sql.=" where ".$this->PK[0]." =  ".$this->connection->quote($pTB["LivreID"]);
+		$sql.=" titre 			=".$this->connection->quote($pTB["Titre"]);
+		$sql.=", auteur  		=".$this->connection->quote($pTB["Auteur"]);
+		$sql.=", prix_unitaire	=".$this->connection->quote($pTB["Prix"]);
+		$sql.=", actif 			=".$this->connection->quote($pTB["Actif"]);
+		$sql.=" where ".$this->PK[0]." =  ".$this->connection->quote($pTB["#"]);
 
 		return $this->connection->query($sql);
+	}
+
+	public function insert($pTB){
+
+		$sql= " insert into ".$this->table;
+		$sql.=" (titre, auteur, prix_unitaire, actif ) ";
+		$sql.=" values ( ";
+		$sql.=" 	".$this->connection->quote($pTB["Titre"]);
+		$sql.=" 	,".$this->connection->quote($pTB["Auteur"]);
+		$sql.=" 	,".$this->connection->quote($pTB["Prix"]);
+		$sql.=" 	,".$this->connection->quote($pTB["Actif"]);
+		$sql.=" ) ";
+
+		$valRetour=$this->connection->query($sql);
+		if($valRetour==true){
+			$this->id[0]=$this->connection->lastInsertId();
+		}else{
+			$this->id[0]="";
+		}
+
+		return $valRetour;
 	}
 
 	public function setActif($id, $value) {

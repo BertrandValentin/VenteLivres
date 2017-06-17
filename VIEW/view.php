@@ -1,7 +1,11 @@
 <?php 
 class View{
-	public static function rtv_Table($pParam, $pNom='', $pColID='', $pAction= ''){
+	public static function rtv_Table($pParam, $pNom='', $pColID='', $pAction= '', $pNew = false){
 		$out  = "";
+		$formNouveau="";
+		if($pNew===true) {
+			$formNouveau = self::rtv_button_new($pAction);
+		}
 		$titre= '<tr>';
 		$titre_trt= false;
 
@@ -29,7 +33,7 @@ class View{
 			$titre_trt= true;
 			$out .= $colForm."</tr>";
 		}
-		$out = '<section ID="RESULT_'.$pNom.'"><article><table>'.$titre.$out.'</table></article></section>';
+		$out = '<section ID="RESULT_'.$pNom.'"><article>'.$formNouveau.'<table>'.$titre.$out.'</table></article></section>';
 		return $out;
 	}
 	
@@ -56,16 +60,17 @@ class View{
 	}
 
 
-	public static function rtv_Fiche_Admin($pParam, $pAction="", $pPK=""){
+	public static function rtv_Fiche_Admin($pParam, $pAction="", $pPK="",$pMode="MODIF"){
 		$out = '<form method="post" action="'.$pAction.'">';
 		$out .= '<input type="hidden" name="FormFiche" value="1">';
 		$out .= '<input type="hidden" name="FormModeAjax" value="0">';
+		$out .= '<input type="hidden" name="MODE" value="'.$pMode.'">';
 
 		foreach($pParam->data as $key => $element){
 			foreach($element as $subkey => $subelement){
 				$varReadOnly="";
 				if($subkey==$pPK){
-					$varReadOnly="readonly disabled";
+					$varReadOnly="readonly";
 				}
 				$out .= '<p><label for="'.$subkey.'" class="FormFiche">'.$subkey.'</label> : <input type="text" name="'.
 						$subkey.'" value="'.$subelement.'" '.$varReadOnly.' /></p>';
@@ -108,6 +113,15 @@ class View{
 				</section>';
 
 		return $out;
+	}
+
+	public static function rtv_button_new($pAction) {
+		$formNouveau="";
+		$formNouveau .= '<form action="'.$pAction.'" method="post" accept-charset="utf-8">';
+		$formNouveau .= '<input type="hidden" name="FormFicheAjout" value="1" >';
+		$formNouveau .= '<input type="submit" name="" value="Nouveau">';
+		$formNouveau .= '</form>';
+		return $formNouveau;
 	}
 }
 ?>

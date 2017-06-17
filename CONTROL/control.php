@@ -30,5 +30,9 @@ class Control{
 			return null;
 		}
 	}
+
+	public static function is_admin() {
+		return isset($_SESSION['USEROBJECT']) && isset($_SESSION['USEROBJECT']->admin) && $_SESSION['USEROBJECT']->admin == '2';
+	}
 }
 ?>

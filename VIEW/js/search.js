@@ -5,7 +5,7 @@ var AjaxRech = function()
 	$form=$input.parent("form");
 	$formAction = $form.attr("action");
 	$formValeur = $input.val();
-	$zoneResult = '#RESULT_'+$input.attr("name");
+	$zoneResult = '#RESULT_'+$input.attr("name").replace("BUTTONS", "ZONE");
 	$formAction = $formAction.replace(".php", "_ajax.php");
 
 	var value = $("input:checked").val();
@@ -21,11 +21,13 @@ var AjaxRadio = function() {
 	$form=$input.parents("form");
 	$formAction = $form.attr("action");
 	$formValeur = $input.val();
-	$zoneResult = '#RESULT_'+$input.attr("name").replace("RADIO", "RECH");
+	$zoneResult = '#RESULT_'+$input.attr("name").replace("BUTTONS", "ZONE");
 	$formAction = $formAction.replace(".php", "_ajax.php");
 
 	var value = $("input:text").val();
-	console.log(value);
+
+	console.log($zoneResult);
+	console.log($($zoneResult));
 
 	$.post( $formAction, { RECH_AJAX : value, 'RADIO': $formValeur })
   		.done(function( data ) {$($zoneResult).replaceWith(data);});

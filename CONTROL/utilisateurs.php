@@ -20,7 +20,8 @@
 	echo VIEW::rtv_Zone_Rech("../CONTROL/utilisateurs.php", "ZONE_RECH_USERS", $rech, "Rechercher un utilisateur");
 	/*appel de la fonction qui ajoute les boutons*/
 	$buttons = array('admin' => 'admin', 'actif' => 'actif');
-	echo View::rtv_zone_radio_buttons("../CONTROL/utilisateurs.php", "RADIO", $buttons);
+	echo View::rtv_zone_radio_buttons("../CONTROL/utilisateurs.php", "BUTTONS_RECH_USERS", $buttons);
+
 	require_once('../CONTROL/utilisateurs_ajax.php');
 
 	require_once('../VIEW/right.php');
